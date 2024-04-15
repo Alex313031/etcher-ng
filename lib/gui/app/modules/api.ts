@@ -78,7 +78,7 @@ async function spawnChild({
 	const env = writerEnv(IPC_CLIENT_ID, IPC_SERVER_ID, IPC_SOCKET_ROOT);
 	if (withPrivileges) {
 		return await permissions.elevateCommand(argv, {
-			applicationName: packageJSON.productName,
+			applicationName: packageJSON.displayName,
 			environment: env,
 		});
 	} else {
