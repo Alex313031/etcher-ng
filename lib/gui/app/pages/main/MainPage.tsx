@@ -284,7 +284,7 @@ export class MainPage extends React.Component<
 						width="100%"
 						alignItems="center"
 						justifyContent="center"
-						title="balenaEtcher Website"
+						title="Etcher-ng Website"
 					>
 						<EtcherSvg
 							width="123px"
@@ -295,7 +295,7 @@ export class MainPage extends React.Component<
 								WebkitAppRegion: 'no-drag',
 							}}
 							onClick={() =>
-								openExternal('https://etcher.balena.io?ref=etcher_footer')
+								openExternal('https://github.com/Alex313031/etcher-ng#readme')
 							}
 							tabIndex={100}
 						/>

@@ -73,35 +73,6 @@ yay -S balena-etcher
 yay -R balena-etcher
 ```
 
-#### WinGet (Windows)
-
-This package is updated by [gh-action](https://github.com/vedantmgoyal2009/winget-releaser), and is kept up to date automatically.
-
-```sh
-winget install balenaEtcher #or Balena.Etcher
-```
-
-##### Uninstall
-
-```sh
-winget uninstall balenaEtcher
-```
-
-#### Chocolatey (Windows)
-
-This package is maintained by [@majkinetor](https://github.com/majkinetor), and
-is kept up to date automatically.
-
-```sh
-choco install etcher
-```
-
-##### Uninstall
-
-```sh
-choco uninstall etcher
-```
-
 ## Support
 
 If you're having any problem, please [raise an issue][newissue] on GitHub, and

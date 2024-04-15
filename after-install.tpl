@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Link to the binary
-# Must hardcode balenaEtcher directory; no variable available
+# Must hardcode Etcher directory; no variable available
 ln -sf '/opt/Etcher-ng/${executable}' '/usr/bin/${executable}'
 
 # SUID chrome-sandbox for Electron 5+

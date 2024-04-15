@@ -65,18 +65,23 @@ store.dispatch({
 
 const applicationSessionUuid = store.getState().toJS().applicationSessionUuid;
 const flashingWorkflowUuid = store.getState().toJS().flashingWorkflowUuid;
+const electronVersion = process.versions.electron;
 
 console.log(outdent`
 	${outdent}
-	 _______  _______  _______  __   __  _______  ______           __    _  _______ 
-	|       ||       ||       ||  | |  ||       ||    _ |         |  |  | ||       |
-	|    ___||_     _||       ||  |_|  ||    ___||   | ||   ____  |   |_| ||    ___|
-	|   |___   |   |  |       ||       ||   |___ |   |_||_ |____| |       ||   | __ 
-	|    ___|  |   |  |      _||       ||    ___||    __  |       |  _    ||   ||  |
-	|   |___   |   |  |     |_ |   _   ||   |___ |   |  | |       | | |   ||   |_| |
-	|_______|  |___|  |_______||__| |__||_______||___|  |_|       |_|  |__||_______|
-
-	Version = ${packageJSON.version}, Type = ${packageJSON.packageType}
+	 _____ _       _
+	|  ___| |     | |
+	| |__ | |_ ___| |__   ___ _ __
+	|  __|| __/ __| '_ \\ / _ \\ '__|
+	| |___| || (__| | | |  __/ |
+	\\____/ \\__\\___|_| |_|\\___|_|
+	
+	
+	App Version = ${packageJSON.version}, Type = ${packageJSON.packageType}
+	
+	Electron Version = ${electronVersion}
+	
+	
 `);
 
 const currentVersion = packageJSON.version;
