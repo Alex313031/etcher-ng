@@ -40,7 +40,7 @@
         "uuid": "9.0.1"
       },
       "devDependencies": {
-        "@balena/lint": "7.2.6",
+        "@balena/lint": "7.3.0",
         "@electron-forge/cli": "7.3.0",
         "@electron-forge/maker-deb": "7.3.0",
         "@electron-forge/maker-dmg": "7.3.0",
@@ -2748,9 +2748,9 @@
       "integrity": "sha512-ER6xtNwBSytZ1E1TmEzcE19mHpfJH8NPItxgGeJZjMYE4k5VHlBorl4UwZkAmsiW4vhy7LgJ+RGvHU15rB1L7g=="
     },
     "node_modules/@balena/lint": {
-      "version": "7.2.6",
-      "resolved": "https://registry.npmjs.org/@balena/lint/-/lint-7.2.6.tgz",
-      "integrity": "sha512-lOwfmhFT9qYvJStsvpGB0gSZSRbgesNZtVi5mHibZju2Fggf22u/mucHKkKctiz9xM6r78QLS3tFBgbjpL7KZA==",
+      "version": "7.3.0",
+      "resolved": "https://registry.npmjs.org/@balena/lint/-/lint-7.3.0.tgz",
+      "integrity": "sha512-efEWn7D9uEaDw3hCHfFh4gDRFErg2cTlAO4GbYxlvVv1QP4gA33zXgLGovJvEIpjC0o23kNx5Ai6DLnr+EAgyw==",
       "dev": true,
       "dependencies": {
         "@typescript-eslint/eslint-plugin": "^6.20.0",
