@@ -111,6 +111,11 @@ export const rendererConfig: Configuration = {
 			banner: '__REACT_DEVTOOLS_GLOBAL_HOOK__ = { isDisabled: true };',
 			raw: true,
 		}),
+		new CopyPlugin({
+			patterns: [
+				{ from: 'lib/gui/assets/icon48.png', to: 'main_window/media/icon48.png' },
+			],
+		}),
 	],
 	resolve: {
 		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
