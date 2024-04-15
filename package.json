@@ -31,6 +31,11 @@
     "burn": "rimraf package-lock.json && rimraf npm-shrinkwrap.json && rimraf node_modules",
     "shrinkwrap": "npm shrinkwrap"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettify"
+    }
+  },
   "dependencies": {
     "@balena/sudo-prompt": "9.2.1-workaround-windows-amperstand-in-username-0849e215b947987a643fe5763902aea201255534",
     "@electron/remote": "^2.1.2",
@@ -154,11 +159,6 @@
   },
   "engines": {
     "node": ">=18 <20"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettify"
-    }
   },
   "versionist": {
     "publishedAt": "2024-03-05T20:13:27.845Z"
