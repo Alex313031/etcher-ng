@@ -150,7 +150,7 @@ const translation = {
 			help: 'Help',
 			pro: 'Etcher Pro',
 			website: 'Etcher Website',
-			issue: 'Report an issue',
+			issue: 'Report an Issue',
 			devmenu: 'Developer',
 			electrondevtools: 'Open Electron DevTools',
 			testwindow: 'Open Test Window',

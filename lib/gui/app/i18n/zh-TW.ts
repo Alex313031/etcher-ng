@@ -142,7 +142,7 @@ const translation = {
 			help: '協助',
 			pro: 'Etcher 專業版',
 			website: 'Etcher 的官網',
-			issue: '提交 issue',
+			issue: '提交 Issue',
 			devmenu: '開發商',
 			electrondevtools: '開啟 Electron 開發工具',
 			testwindow: '開啟測試視窗',

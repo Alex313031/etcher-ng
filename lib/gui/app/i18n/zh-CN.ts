@@ -78,7 +78,7 @@ const translation = {
 			help: '帮助',
 			pro: 'Etcher 专业版',
 			website: 'Etcher 的官网',
-			issue: '提交一个 issue',
+			issue: '提交一个 Issue',
 			devmenu: '开发商',
 			electrondevtools: '打开 Electron 开发工具',
 			testwindow: '打开测试窗口',
