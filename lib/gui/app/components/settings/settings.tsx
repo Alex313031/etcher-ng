@@ -110,6 +110,11 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 			}
 			done={() => toggleModal(false)}
 		>
+			<Txt fontSize={24} mb={14}>
+				<u>
+					{i18next.t('settings.settings')}
+				</u>
+			</Txt>
 			<Flex flexDirection="column">
 				{settingsList.map((setting: Setting, i: number) => {
 					return (
