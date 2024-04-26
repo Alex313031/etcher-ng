@@ -1,17 +1,20 @@
 {
-  "name": "balena-etcher",
+  "name": "etcher-ng",
   "private": true,
-  "displayName": "balenaEtcher",
-  "productName": "balenaEtcher",
-  "version": "1.19.16",
+  "appName": "Etcher-ng",
+  "productName": "Etcher-ng",
+  "displayName": "Etcher NG",
+  "version": "1.19.17",
   "packageType": "local",
   "main": ".webpack/main",
   "description": "Flash OS images to SD cards and USB drives, safely and easily.",
-  "productDescription": "Etcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
-  "homepage": "https://github.com/balena-io/etcher",
+  "productDescription": "Etcher-ng is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
+  "author": "Alex313031 <alex313031@gmail.com>",
+  "license": "Apache-2.0",
+  "copyright": "Copyright © 2024 Alex313031",
+  "homepage": "https://github.com/Alex313031/etcher-ng#readme",
   "repository": {
-    "type": "git",
-    "url": "git@github.com:balena-io/etcher.git"
+    "url": "https://github.com/Alex313031/etcher-ng.git"
   },
   "scripts": {
     "prettify": "prettier --write lib/**/*.css && balena-lint --fix --typescript typings lib tests forge.config.ts forge.sidecar.ts webpack.config.ts",
@@ -19,26 +22,33 @@
     "test": "echo 'Only use custom tests; if you want to test locally, use `npm run wdio`' && exit 0",
     "package": "electron-forge package",
     "start": "electron-forge start",
+    "build": "npm run package",
     "make": "electron-forge make",
-    "wdio": "xvfb-maybe wdio run ./wdio.conf.ts"
+    "wdio": "xvfb-maybe wdio run ./wdio.conf.ts",
+    "dist": "electron-builder",
+    "clean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack && rimraf node_modules",
+    "distclean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack",
+    "burn": "rimraf package-lock.json && rimraf npm-shrinkwrap.json && rimraf node_modules",
+    "shrinkwrap": "npm shrinkwrap"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run prettify"
     }
   },
-  "author": "Balena Ltd. <hello@balena.io>",
-  "license": "Apache-2.0",
   "dependencies": {
-    "@electron/remote": "^2.1.2",
-    "@fortawesome/fontawesome-free": "^6.5.2",
-    "@ronomon/direct-io": "^3.0.1",
-    "@sentry/electron": "^4.24.0",
-    "analytics-client": "^2.0.1",
-    "axios": "^1.6.8",
+    "@electron/remote": "2.1.2",
+    "@fortawesome/fontawesome-free": "6.5.2",
+    "@ronomon/direct-io": "3.0.1",
+    "@sentry/electron": "4.24.0",
+    "analytics-client": "2.0.2",
+    "axios": "1.6.8",
     "debug": "4.3.4",
-    "drivelist": "^12.0.2",
-    "electron-squirrel-startup": "^1.0.0",
+    "drivelist": "12.0.2",
+    "electron-context-menu": "3.6.1",
+    "electron-log": "5.1.2",
+    "electron-squirrel-startup": "1.0.0",
+    "electron-store": "8.2.0",
     "electron-updater": "6.1.8",
     "etcher-sdk": "9.0.11",
     "i18next": "23.11.2",
@@ -51,12 +61,12 @@
     "react-dom": "17.0.2",
     "react-i18next": "13.5.0",
     "redux": "4.2.1",
-    "rendition": "35.2.0",
+    "rendition": "35.1.3",
     "semver": "7.6.0",
-    "styled-components": "5.3.6",
+    "styled-components": "5.3.11",
     "sys-class-rgb-led": "3.0.1",
     "uuid": "9.0.1",
-    "ws": "^8.16.0"
+    "ws": "8.16.0"
   },
   "devDependencies": {
     "@balena/lint": "8.0.2",
@@ -71,38 +81,42 @@
     "@reforged/maker-appimage": "3.3.2",
     "@svgr/webpack": "8.1.0",
     "@types/chai": "4.3.14",
-    "@types/debug": "^4.1.12",
+    "@types/copy-webpack-plugin": "10.1.0",
+    "@types/debug": "4.1.12",
     "@types/mime-types": "2.1.4",
-    "@types/node": "^20.11.6",
+    "@types/node": "^18.19.31",
     "@types/react": "17.0.2",
     "@types/react-dom": "17.0.2",
     "@types/semver": "7.5.8",
     "@types/sinon": "17.0.3",
     "@types/tmp": "0.2.6",
     "@vercel/webpack-asset-relocator-loader": "1.7.3",
-    "@wdio/cli": "^8.36.1",
-    "@wdio/local-runner": "^8.36.1",
-    "@wdio/mocha-framework": "^8.36.1",
-    "@wdio/spec-reporter": "^8.36.1",
-    "@yao-pkg/pkg": "^5.11.5",
-    "catch-uncommitted": "^2.0.0",
-    "chai": "4.3.10",
+    "@wdio/cli": "8.36.1",
+    "@wdio/local-runner": "8.36.1",
+    "@wdio/mocha-framework": "8.36.1",
+    "@wdio/spec-reporter": "8.36.1",
+    "@yao-pkg/pkg": "5.11.5",
+    "catch-uncommitted": "2.0.0",
+    "chai": "4.4.1",
+    "copy-webpack-plugin": "10.2.4",
     "css-loader": "5.2.7",
-    "electron": "30.0.1",
+    "electron": "25.9.8",
+    "electron-builder": "24.13.3",
     "file-loader": "6.2.0",
     "husky": "8.0.3",
     "native-addon-loader": "2.0.1",
-    "node-loader": "^2.0.0",
-    "sinon": "^17.0.1",
+    "node-loader": "2.0.0",
+    "rimraf": "4.4.1",
+    "sinon": "17.0.1",
     "string-replace-loader": "3.1.0",
-    "style-loader": "3.3.3",
-    "ts-loader": "^9.5.1",
-    "ts-node": "^10.9.2",
+    "style-loader": "3.3.4",
+    "ts-loader": "9.5.1",
+    "ts-node": "10.9.2",
     "tslib": "2.6.2",
-    "typescript": "^5.3.3",
+    "typescript": "5.3.3",
     "url-loader": "4.1.1",
-    "wdio-electron-service": "^6.4.1",
-    "xvfb-maybe": "^0.2.1"
+    "wdio-electron-service": "6.4.1",
+    "xvfb-maybe": "0.2.1"
   },
   "hostDependencies": {
     "debian": [
@@ -123,6 +137,7 @@
       "libgdk-pixbuf2.0-0",
       "libglib2.0-0",
       "libgtk-3-0",
+      "libkrb5-3",
       "liblzma5",
       "libnotify4",
       "libnspr4",
@@ -144,13 +159,13 @@
     ]
   },
   "engines": {
-    "node": ">=20 <21"
+    "node": ">=18 <20"
   },
   "versionist": {
-    "publishedAt": "2024-04-26T14:33:19.590Z"
+    "publishedAt": "2024-04-26T18:06:56.845Z"
   },
   "optionalDependencies": {
-    "bufferutil": "^4.0.8",
-    "utf-8-validate": "^5.0.10"
+    "bufferutil": "4.0.8",
+    "utf-8-validate": "5.0.10"
   }
 }

@@ -34,20 +34,20 @@ const config: ForgeConfig = {
 	packagerConfig: {
 		asar: true,
 		icon: './assets/icon',
-		executableName:
-			process.platform === 'linux' ? 'balena-etcher' : 'balenaEtcher',
-		appBundleId: 'io.balena.etcher',
+		executableName: process.platform === 'linux' ? 'etcher-ng' : 'Etcher-ng',
+		appBundleId: 'io.alex313031.etcher',
 		appCategoryType: 'public.app-category.developer-tools',
-		appCopyright: 'Copyright 2016-2023 Balena Ltd',
+		appCopyright: 'Copyright 2016-2024 Balena Ltd. and Alex313031',
 		darwinDarkModeSupport: true,
 		protocols: [{ name: 'etcher', schemes: ['etcher'] }],
 		extraResource: [
 			'lib/shared/sudo/sudo-askpass.osascript-zh.js',
 			'lib/shared/sudo/sudo-askpass.osascript-en.js',
+			'lib/gui/assets',
 		],
 		osxSign: {
 			optionsForFile: () => ({
-				entitlements: './entitlements.mac.plist',
+				entitlements: './assets/entitlements.mac.plist',
 				hardenedRuntime: true,
 			}),
 		},
@@ -60,7 +60,7 @@ const config: ForgeConfig = {
 		new MakerZIP(),
 		new MakerSquirrel({
 			setupIcon: 'assets/icon.ico',
-			loadingGif: 'assets/icon.png',
+			loadingGif: 'assets/install-spinner.gif',
 			...winSigningConfig,
 		}),
 		new MakerDMG({
@@ -88,13 +88,13 @@ const config: ForgeConfig = {
 		}),
 		new MakerAppImage({
 			options: {
-				icon: './assets/icon.png',
+				icon: './icon.png',
 				categories: ['Utility'],
 			},
 		}),
 		new MakerRpm({
 			options: {
-				icon: './assets/icon.png',
+				icon: './icon.png',
 				categories: ['Utility'],
 				productDescription,
 				requires: ['util-linux'],
@@ -102,7 +102,7 @@ const config: ForgeConfig = {
 		}),
 		new MakerDeb({
 			options: {
-				icon: './assets/icon.png',
+				icon: './icon.png',
 				categories: ['Utility'],
 				section: 'utils',
 				priority: 'optional',
@@ -160,7 +160,7 @@ const config: ForgeConfig = {
 				// symlink the etcher binary from balena-etcher to balenaEtcher to ensure compatibility with the wdio suite and the old name
 				await new Promise<void>((resolve, reject) => {
 					exec(
-						`ln -s "${options.outputPaths}/balena-etcher" "${options.outputPaths}/balenaEtcher"`,
+						`ln -s "${options.outputPaths}/etcher-ng" "${options.outputPaths}/balenaEtcher"`,
 						(err) => {
 							if (err) {
 								reject(err);

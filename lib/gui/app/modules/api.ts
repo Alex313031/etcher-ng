@@ -108,14 +108,14 @@ async function connectToChildProcess(
 		let heartbeat: any;
 
 		const startHeartbeat = (emit: any) => {
-			console.log('start heartbeat');
+			console.log('Starting heartbeat...');
 			heartbeat = setInterval(() => {
 				emit('heartbeat', {});
 			}, 1000);
 		};
 
 		const stopHeartbeat = () => {
-			console.log('stop heartbeat');
+			console.log('Stopping heartbeat...');
 			clearInterval(heartbeat);
 		};
 
@@ -142,18 +142,18 @@ async function connectToChildProcess(
 			// parse and route messages
 			const messagesHandler: any = {
 				log: (message: any) => {
-					console.log(`CHILD LOG: ${message}`);
+					console.log(`Child Process Log: ${message}`);
 				},
 
 				error: (error: any) => {
 					const errorObject = errors.fromJSON(error);
-					console.error('CHILD ERROR', errorObject);
+					console.error('Child Process Error:', errorObject);
 					stopHeartbeat();
 				},
 
 				// once api is ready (means child process is connected) we pass the emit function to the caller
 				ready: () => {
-					console.log('CHILD READY');
+					console.log('Child Process Ready!');
 
 					startHeartbeat(emit);
 
@@ -193,12 +193,12 @@ async function spawnChildAndConnect({
 		process.env.ETCHER_SERVER_PORT ?? withPrivileges ? '3435' : '3434';
 	const etcherServerId =
 		process.env.ETCHER_SERVER_ID ??
-		`etcher-${Math.random().toString(36).substring(7)}`;
+		`etcher-ng-${Math.random().toString(36).substring(7)}`;
 
 	console.log(
 		`Spawning ${
 			withPrivileges ? 'priviledged' : 'unpriviledged'
-		} sidecar on port ${etcherServerPort}`,
+		} etcher-util sidecar on port ${etcherServerPort}`,
 	);
 
 	// spawn the child process, which will act as the ws server
@@ -212,7 +212,7 @@ async function spawnChildAndConnect({
 				etcherServerPort,
 			);
 			if (result.cancelled) {
-				throw new Error('Spwaning the child process was cancelled');
+				throw new Error('Spawning the child process was cancelled');
 			}
 		} catch (error) {
 			console.error('Error spawning child process', error);

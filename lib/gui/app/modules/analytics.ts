@@ -207,7 +207,7 @@ function reportAnalytics(message: string, data: AnalyticsPayload = {}) {
  * This function sends the debug message to product analytics services.
  */
 export async function logEvent(message: string, data: AnalyticsPayload = {}) {
-	const shouldReportAnalytics = await settings.get('errorReporting');
+	const shouldReportAnalytics = false;
 	if (shouldReportAnalytics) {
 		initAnalytics();
 		reportAnalytics(message, data);
@@ -221,7 +221,7 @@ export async function logEvent(message: string, data: AnalyticsPayload = {}) {
  * This function logs an exception to error reporting services.
  */
 export function logException(error: any) {
-	const shouldReportErrors = settings.getSync('errorReporting');
+	const shouldReportErrors = false;
 	console.error(error);
 	if (shouldReportErrors) {
 		initAnalytics();

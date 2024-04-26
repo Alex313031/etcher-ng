@@ -17,11 +17,12 @@
 import GithubSvg from '@fortawesome/fontawesome-free/svgs/brands/github.svg';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Checkbox, Flex, Txt } from 'rendition';
+import { Box, Checkbox, Divider, Flex, Txt } from 'rendition';
 
 import { version, packageType } from '../../../../../package.json';
 import * as settings from '../../models/settings';
 import * as analytics from '../../modules/analytics';
+import { open as openInternal } from '../../os/open-internal-remote/services/open-internal';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import { Modal } from '../../styled-components';
 import * as i18next from 'i18next';
@@ -35,20 +36,21 @@ interface Setting {
 async function getSettingsList(): Promise<Setting[]> {
 	const list: Setting[] = [
 		{
-			name: 'errorReporting',
-			label: i18next.t('settings.errorReporting'),
+			name: 'verify',
+			label: i18next.t('settings.verify'),
+			tooltip: i18next.t('settings.verifyDesc'),
 		},
 		{
 			name: 'autoBlockmapping',
 			label: i18next.t('settings.trimExtPartitions'),
+			tooltip: i18next.t('settings.trimExtPartitions'),
+		},
+		{
+			name: 'decompressFirst',
+			label: i18next.t('settings.decompressFirst'),
+			tooltip: i18next.t('settings.decompressFirst'),
 		},
 	];
-	if (['appimage', 'nsis', 'dmg'].includes(packageType)) {
-		list.push({
-			name: 'updatesEnabled',
-			label: i18next.t('settings.autoUpdate'),
-		});
-	}
 	return list;
 }
 
@@ -101,7 +103,9 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 		<Modal
 			titleElement={
 				<Txt fontSize={24} mb={24}>
-					{i18next.t('settings.settings')}
+					<u>
+						{i18next.t('settings.settings')}
+					</u>
 				</Txt>
 			}
 			done={() => toggleModal(false)}
@@ -109,11 +113,12 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 			<Flex flexDirection="column">
 				{settingsList.map((setting: Setting, i: number) => {
 					return (
-						<Flex key={setting.name} mb={14}>
+						<Flex key={setting.name} mt={14} mb={14}>
 							<Checkbox
 								toggle
 								tabIndex={6 + i}
 								label={setting.label}
+								tooltip={setting.tooltip}
 								checked={currentSettings[setting.name]}
 								onChange={() => toggleSetting(setting.name)}
 							/>
@@ -130,18 +135,20 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 						)}
 					</Flex>
 				)}
+				<Divider color="#00aeef" />
 				<Flex
-					mt={18}
+					mt={14}
 					alignItems="center"
 					color="#00aeef"
+					title="View Changelog"
 					style={{
 						width: 'fit-content',
 						cursor: 'pointer',
 						fontSize: 14,
 					}}
 					onClick={() =>
-						openExternal(
-							'https://github.com/balena-io/etcher/blob/master/CHANGELOG.md',
+						openInternal(
+							'https://github.com/Alex313031/etcher-ng/blob/master/CHANGELOG.md',
 						)
 					}
 				>
