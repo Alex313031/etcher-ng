@@ -25,7 +25,7 @@
     "build": "npm run package",
     "make": "electron-forge make",
     "wdio": "xvfb-maybe wdio run ./wdio.conf.ts",
-    "dist": "electron-builder",
+    "dist": "npm run build && electron-builder",
     "clean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack && rimraf node_modules",
     "distclean": "rimraf ./out && rimraf ./dist && rimraf ./dist-builder && rimraf ./.webpack",
     "burn": "rimraf package-lock.json && rimraf npm-shrinkwrap.json && rimraf node_modules",
