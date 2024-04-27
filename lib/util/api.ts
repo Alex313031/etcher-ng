@@ -63,12 +63,12 @@ async function terminate(exitCode?: number) {
 	});
 }
 
-// kill the process if no initila connections or heartbeat for X sec (default 10)
+// kill the process if no initial connections or heartbeat for X sec (default 10)
 function setTerminateTimeout() {
 	if (ETCHER_TERMINATE_TIMEOUT > 0) {
 		return setTimeout(() => {
 			console.log(
-				`no connections or heartbeat for ${ETCHER_TERMINATE_TIMEOUT} ms, terminating`,
+				`ERROR: No connections or heartbeat for ${ETCHER_TERMINATE_TIMEOUT} ms, terminating`,
 			);
 			terminate();
 		}, ETCHER_TERMINATE_TIMEOUT);
@@ -97,7 +97,7 @@ interface EmitLog {
 function setup(): Promise<EmitLog> {
 	return new Promise((resolve, reject) => {
 		wss.on('connection', (ws) => {
-			console.log('connection established... setting up');
+			console.log('Connection established... Setting up');
 
 			/**
 			 * @summary Send a message to the IPC server
@@ -145,7 +145,7 @@ function setup(): Promise<EmitLog> {
 			 * @summary Handle `write` from client; start writing to the drives
 			 */
 			const onWrite = async (options: WriteOptions) => {
-				log('write requested');
+				log('Write requested');
 
 				// Remove leftover tmp files older than 1 hour
 				cleanup(Date.now() - 60 * 60 * 1000);
@@ -212,7 +212,7 @@ function setup(): Promise<EmitLog> {
 
 				// resolve the setup promise when the client is ready
 				ready: () => {
-					log('Ready ...');
+					log('Ready.');
 					resolve({ emit, log });
 				},
 
@@ -257,7 +257,7 @@ function setup(): Promise<EmitLog> {
 }
 
 // setTimeout(() => console.log('wss', wss.address()), 1000);
-console.log('waiting for connection...');
+console.log('Waiting for connection...');
 
 setup().then(({ emit, log }: EmitLog) => {
 	// connection is established, clear initial terminate timeout
@@ -265,7 +265,7 @@ setup().then(({ emit, log }: EmitLog) => {
 		clearInterval(terminateInterval);
 	}
 
-	console.log('waiting for instruction...');
+	console.log('Waiting for instruction...');
 
 	// set the exportable emit functions
 	emitLog = (message) => {

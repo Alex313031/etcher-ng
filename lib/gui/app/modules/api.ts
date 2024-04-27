@@ -62,7 +62,7 @@ async function spawnChild(
 	};
 
 	if (withPrivileges) {
-		console.log('... with privileges ...');
+		console.log('...with privileges...');
 		return permissions.elevateCommand(argv, {
 			applicationName: packageJSON.displayName,
 			env,
@@ -197,7 +197,7 @@ async function spawnChildAndConnect({
 
 	console.log(
 		`Spawning ${
-			withPrivileges ? 'priviledged' : 'unpriviledged'
+			withPrivileges ? 'privileged' : 'unprivileged'
 		} etcher-util sidecar on port ${etcherServerPort}`,
 	);
 
