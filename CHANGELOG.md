@@ -6,18 +6,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 # v1.19.17
 ## (2024-04-26)
 
-* Rebase: Rebase and downgrade to Node 18/Electron 25 [Alex313031]
-* Added Electron version to Javascript Console
-* Added "Decompress First" option to Settings
-* Tweaked Settings page
-* Made most links open in new Electron window rather than external browser
-* Stopped inlining notification icon png
-* Completely disabled auto-updates and telemetry
-* Fixed dark mode sometimes not working on some OSes
-* Added "Edit Config File" to the Developer menu
-* Added keyboard shortcut for chrome://process-internals
-* Changed Restart App shortcut to Ctrl + Alt + R instead of Ctrl + Shift + R, which would just reload the page
-* Linting and spelling fixes
+* Rebase: Rebase and downgrade to Node 18/Electron 28 [Alex313031]
+* Update some npm packages [Alex313031]
+* Added Electron version to Javascript Console [Alex313031]
+* Added "Decompress First" option to Settings [Alex313031]
+* Tweaked Settings page, and restored the "Settings" title [Alex313031]
+* Made most links open in new Electron window rather than external browser [Alex313031]
+* Stopped inlining notification icon png [Alex313031]
+* Completely disabled auto-updates and telemetry [Alex313031]
+* Fixed dark mode sometimes not working on some OSes [Alex313031]
+* Added "Edit Config File" to the Developer menu [Alex313031]
+* Added keyboard shortcut for chrome://process-internals [Alex313031]
+* Changed Restart App shortcut to Ctrl + Alt + R instead of Ctrl + Shift + R, which would just reload the page [Alex313031]
+* Linting and spelling fixes [Alex313031]
 
 # v1.19.16
 ## (2024-04-26)
