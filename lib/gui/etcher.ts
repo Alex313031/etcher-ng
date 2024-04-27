@@ -233,7 +233,7 @@ async function createMainWindow() {
 			windowDetails.position[1],
 		);
 	} else {
-		electronLog.info('No windowDetails.');
+		electronLog.warn('No windowDetails');
 	}
 
 	return mainWindow;
