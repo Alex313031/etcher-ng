@@ -104,7 +104,7 @@
     "chai": "4.4.1",
     "copy-webpack-plugin": "10.2.4",
     "css-loader": "5.2.7",
-    "electron": "25.9.8",
+    "electron": "28.3.1",
     "electron-builder": "24.13.3",
     "file-loader": "6.2.0",
     "husky": "8.0.3",

@@ -1,5 +1,5 @@
 {
-  "electronVersion": "25.9.8",
+  "electronVersion": "28.3.1",
   "asar": true,
   "productName": "Etcher-ng",
   "appId": "com.alex313031.etcher-ng",
