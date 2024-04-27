@@ -22,7 +22,6 @@ declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 import * as electron from 'electron';
 import * as remoteMain from '@electron/remote/main';
-import { autoUpdater } from 'electron-updater';
 import * as electronLog from 'electron-log';
 import * as Store from 'electron-store';
 import * as contextMenu from 'electron-context-menu';
@@ -64,7 +63,7 @@ const isLinux = process.platform === 'linux';
 const isWin = process.platform === 'win32';
 const isMac = process.platform === 'darwin';
 
-async function checkForUpdates(interval: number) {
+async function checkForUpdates() {
 	electronLog.info('Auto-Updates disabled for this build');
 }
 
@@ -210,18 +209,7 @@ async function createMainWindow() {
 	remoteMain.enable(page);
 
 	page.once('did-frame-finish-load', async () => {
-		console.log('packageUpdatable', packageUpdatable);
-		autoUpdater.on('error', (err) => {
-			logMainProcessException(err);
-		});
-		if (packageUpdatable) {
-			try {
-				const checkForUpdatesTimer = 300000;
-				checkForUpdates(checkForUpdatesTimer);
-			} catch (err) {
-				logMainProcessException(err);
-			}
-		}
+		checkForUpdates();
 	});
 
 	mainWindow.on('close', () => {

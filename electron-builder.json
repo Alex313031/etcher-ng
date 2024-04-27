@@ -13,11 +13,11 @@
   "files": [ "**/*" ],
   "extraResources": [
     {
-      "from": "./lib/shared/catalina-sudo/sudo-askpass.osascript-en.js",
+      "from": "./lib/shared/sudo/sudo-askpass.osascript-en.js",
       "to": "./"
     },
     {
-      "from": "./lib/shared/catalina-sudo/sudo-askpass.osascript-zh.js",
+      "from": "./lib/shared/sudo/sudo-askpass.osascript-zh.js",
       "to": "./"
     },
     {
