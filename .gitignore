@@ -36,6 +36,9 @@ coverage
 build/Release
 /release/
 
+# Electron binaries
+/electron/
+
 # Dependency directories
 node_modules/
 jspm_packages/
