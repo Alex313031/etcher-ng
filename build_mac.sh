@@ -53,10 +53,10 @@ esac
 
 buildEtcher () {
 # Optimization parameters
-export CFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CXXFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CPPFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export LDFLAGS="-Wl,-O3 -msse3 -s" &&
+export CFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CXXFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CPPFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export LDFLAGS="-msse3 -s" &&
 export VERBOSE=1 &&
 export V=1 &&
 
@@ -81,10 +81,10 @@ esac
 
 buildEtcherAVX () {
 # Optimization parameters
-export CFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CXXFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CPPFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export LDFLAGS="-Wl,-O3 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -s" &&
+export CFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CXXFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CPPFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export LDFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -s" &&
 export VERBOSE=1 &&
 export V=1 &&
 
@@ -109,10 +109,10 @@ esac
 
 packageEtcher () {
 # Optimization parameters
-export CFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CXXFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CPPFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export LDFLAGS="-Wl,-O3 -msse3 -s" &&
+export CFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CXXFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CPPFLAGS="-msse3 -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export LDFLAGS="-msse3 -s" &&
 export VERBOSE=1 &&
 export V=1 &&
 
@@ -137,10 +137,10 @@ esac
 
 packageEtcherAVX () {
 # Optimization parameters
-export CFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CXXFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export CPPFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-maybe-uninitialized -Wno-cast-function-type" &&
-export LDFLAGS="-Wl,-O3 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -s" &&
+export CFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CXXFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export CPPFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -O3 -g0 -s -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-result -Wno-implicit-fallthrough -Wno-cast-function-type" &&
+export LDFLAGS="-msse3 -mssse3 -msse4.1 -msse4.2 -mavx -maes -s" &&
 export VERBOSE=1 &&
 export V=1 &&
 
