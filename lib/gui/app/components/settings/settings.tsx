@@ -22,7 +22,7 @@ import { Box, Checkbox, Divider, Flex, Txt } from 'rendition';
 import { version, packageType } from '../../../../../package.json';
 import * as settings from '../../models/settings';
 import * as analytics from '../../modules/analytics';
-import { open as openInternal } from '../../os/open-internal-remote/services/open-internal';
+import { open as openInternalRemote } from '../../os/open-internal-remote/services/open-internal-remote';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import { Modal } from '../../styled-components';
 import * as i18next from 'i18next';
@@ -152,7 +152,7 @@ export function SettingsModal({ toggleModal }: SettingsModalProps) {
 						fontSize: 14,
 					}}
 					onClick={() =>
-						openInternal(
+						openInternalRemote(
 							'https://github.com/Alex313031/etcher-ng/blob/master/CHANGELOG.md',
 						)
 					}

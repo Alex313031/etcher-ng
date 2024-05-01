@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 balena.io
+ * Copyright 2024 balena.io and Alex313031
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,6 +54,7 @@ let mainWindow: any = null;
 remoteMain.initialize();
 
 // Restrict main.log size to 100Kb
+electronLog.initialize();
 electronLog.transports.file.maxSize = 1024 * 100;
 
 const store = new Store();
@@ -275,16 +276,7 @@ electron.app.on('window-all-closed', () => {
 // make use of it to ensure the browser window is completely destroyed.
 // See https://github.com/electron/electron/issues/5273
 electron.app.on('before-quit', () => {
-	if (mainWindow) {
-		store.set('windowDetails', {
-			position: mainWindow.getPosition(),
-		});
-		electronLog.info('Saved windowDetails');
-	} else {
-		electronLog.error(
-			'Error: mainWindow was not defined while trying to save windowDetails.',
-		);
-	}
+	electronLog.info('Etcher-ng is quitting now'),
 	electron.app.releaseSingleInstanceLock();
 	process.exit(EXIT_CODES.SUCCESS);
 });
