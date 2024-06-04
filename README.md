@@ -3,7 +3,7 @@
 
 > Flash OS images to SD cards & USB drives, safely and easily.
 
-Note: This is a fork with UI improvements, and Windows 7/8/8.1 compatibility.
+Note: This is a fork with UI and privacy improvements. I also make a Windows 7/8/8.1 compatible fork [Here](https://github.com/Alex313031/etcher-ng-win7).
 
 Etcher-ng is a powerful OS image flasher built with web technologies to ensure
 flashing an SDCard or USB drive is a pleasant and safe experience. It protects
