@@ -32,6 +32,7 @@ import * as flashState from '../../models/flash-state';
 import * as selectionState from '../../models/selection-state';
 import * as settings from '../../models/settings';
 import { observe } from '../../models/store';
+import { open as openInternalRemote } from '../../os/open-internal-remote/services/open-internal-remote';
 import { open as openExternal } from '../../os/open-external/services/open-external';
 import {
 	IconButton as BaseIcon,
@@ -146,7 +147,7 @@ export class MainPage extends React.Component<
 	private async getFeaturedProjectURL() {
 		const url = new URL(
 			(await settings.get('featuredProjectEndpoint')) ||
-				'https://efp.balena.io/index.html',
+				'https://thorium.rocks/etcher-ng',
 		);
 		url.searchParams.append('borderRight', 'false');
 		url.searchParams.append('darkBackground', 'true');
@@ -280,15 +281,22 @@ export class MainPage extends React.Component<
 					}}
 				>
 					<Flex width="100%" />
-					<Flex width="100%" alignItems="center" justifyContent="center">
+					<Flex
+						width="100%"
+						alignItems="center"
+						justifyContent="center"
+						title="Etcher-ng Website"
+					>
 						<EtcherSvg
 							width="123px"
 							height="22px"
 							style={{
 								cursor: 'pointer',
+								// Make touch events click instead of dragging
+								WebkitAppRegion: 'no-drag',
 							}}
 							onClick={() =>
-								openExternal('https://www.balena.io/etcher?ref=etcher_footer')
+								openInternalRemote('https://github.com/Alex313031/etcher-ng#readme')
 							}
 							tabIndex={100}
 						/>
@@ -299,6 +307,7 @@ export class MainPage extends React.Component<
 							icon={<CogSvg height="1em" fill="currentColor" />}
 							plain
 							tabIndex={5}
+							title="Settings"
 							onClick={() => this.setState({ hideSettings: false })}
 							style={{
 								// Make touch events click instead of dragging
@@ -308,10 +317,11 @@ export class MainPage extends React.Component<
 						{!settings.getSync('disableExternalLinks') && (
 							<Icon
 								icon={<QuestionCircleSvg height="1em" fill="currentColor" />}
+								title="Help"
 								onClick={() =>
-									openExternal(
+									openInternalRemote(
 										selectionState.getImage()?.supportUrl ||
-											'https://github.com/balena-io/etcher/blob/master/docs/SUPPORT.md',
+											'https://github.com/Alex313031/etcher-ng/blob/master/docs/SUPPORT.md',
 									)
 								}
 								tabIndex={6}

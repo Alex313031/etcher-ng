@@ -72,8 +72,9 @@ async function write(options: WriteOptions) {
 	const imagePath = options.image.path;
 	emitLog(`Image: ${imagePath}`);
 	emitLog(`Devices: ${destinations.join(', ')}`);
-	emitLog(`Auto blockmapping: ${options.autoBlockmapping}`);
-	emitLog(`Decompress first: ${options.decompressFirst}`);
+	emitLog(`Auto Verification: ${options.verify}`);
+	emitLog(`Auto Blockmapping: ${options.autoBlockmapping}`);
+	emitLog(`Decompress First: ${options.decompressFirst}`);
 	const dests = options.destinations.map((destination) => {
 		return new BlockDevice({
 			drive: destination,
@@ -118,7 +119,7 @@ async function write(options: WriteOptions) {
 		const results = await writeAndValidate({
 			source,
 			destinations: dests,
-			verify: true,
+			verify: options.verify,
 			autoBlockmapping: options.autoBlockmapping,
 			decompressFirst: options.decompressFirst,
 			onProgress,
@@ -168,7 +169,7 @@ async function writeAndValidate({
 		destinations,
 		onFail,
 		onProgress,
-		verify,
+		verify: verify,
 		trim: autoBlockmapping,
 		numBuffers: Math.min(
 			2 + (destinations.length - 1) * 32,

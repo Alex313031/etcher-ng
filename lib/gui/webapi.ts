@@ -10,6 +10,6 @@ import { ipcRenderer } from 'electron';
 // the binary itself.
 export async function getEtcherUtilPath(): Promise<string> {
 	const utilPath = await ipcRenderer.invoke('get-util-path');
-	console.log(utilPath);
+	console.log('etcher-util path', utilPath);
 	return utilPath;
 }

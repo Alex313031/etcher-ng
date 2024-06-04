@@ -1,0 +1,19 @@
+{
+  "name": "etcher-ng",
+  "private": true,
+  "appName": "Etcher-ng",
+  "productName": "Etcher-ng",
+  "displayName": "Etcher NG",
+  "version": "1.19.21",
+  "packageType": "local",
+  "main": "./main/index.js",
+  "description": "Flash OS images to SD cards and USB drives, safely and easily.",
+  "productDescription": "Etcher-ng is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.",
+  "author": "Alex313031 <alex313031@gmail.com>",
+  "license": "Apache-2.0",
+  "copyright": "Copyright © 2024 Alex313031",
+  "homepage": "https://github.com/Alex313031/etcher-ng#readme",
+  "repository": {
+    "url": "https://github.com/Alex313031/etcher-ng.git"
+  }
+}

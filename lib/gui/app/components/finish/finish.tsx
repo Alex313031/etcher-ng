@@ -44,7 +44,7 @@ function restart(goToMain: () => void) {
 async function getSuccessBannerURL() {
 	return (
 		(await settings.get('successBannerURL')) ??
-		'https://efp.balena.io/success-banner?borderTop=false&darkBackground=true'
+		'https://thorium.rocks/etcher-ng'
 	);
 }
 

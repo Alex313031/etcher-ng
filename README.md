@@ -1,8 +1,11 @@
-# Etcher
+# Etcher-ng <img src="icon.png" width="46">
+
 
 > Flash OS images to SD cards & USB drives, safely and easily.
 
-Etcher is a powerful OS image flasher built with web technologies to ensure
+Note: This is a fork with UI improvements, and Windows 7/8/8.1 compatibility.
+
+Etcher-ng is a powerful OS image flasher built with web technologies to ensure
 flashing an SDCard or USB drive is a pleasant and safe experience. It protects
 you from accidentally writing to your hard-drives, ensures every byte of data
 was written correctly, and much more. It can also directly flash Raspberry Pi devices that support [USB device boot mode](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#usb-device-boot-mode).
@@ -18,8 +21,8 @@ was written correctly, and much more. It can also directly flash Raspberry Pi de
 ## Supported Operating Systems
 
 - Linux; most distros; Intel 64-bit.
-- Windows 10 and later; Intel 64-bit.
-- macOS 10.13 (High Sierra) and later; both Intel and Apple Silicon.
+- Windows 7 and later; Intel 64-bit.
+- macOS 10.12 (High Sierra) and later; both Intel and Apple Silicon.
 
 ## Installers
 
@@ -68,35 +71,6 @@ yay -S balena-etcher
 
 ```sh
 yay -R balena-etcher
-```
-
-#### WinGet (Windows)
-
-This package is updated by [gh-action](https://github.com/vedantmgoyal2009/winget-releaser), and is kept up to date automatically.
-
-```sh
-winget install balenaEtcher #or Balena.Etcher
-```
-
-##### Uninstall
-
-```sh
-winget uninstall balenaEtcher
-```
-
-#### Chocolatey (Windows)
-
-This package is maintained by [@majkinetor](https://github.com/majkinetor), and
-is kept up to date automatically.
-
-```sh
-choco install etcher
-```
-
-##### Uninstall
-
-```sh
-choco uninstall etcher
 ```
 
 ## Support

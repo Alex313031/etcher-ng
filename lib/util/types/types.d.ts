@@ -26,6 +26,7 @@ export interface FlashResults extends WriteResult {
 interface WriteOptions {
 	image: SourceMetadata;
 	destinations: DrivelistDrive[];
+	verify: boolean;
 	autoBlockmapping: boolean;
 	decompressFirst: boolean;
 	SourceType: string;

@@ -15,6 +15,7 @@
  */
 
 import CircleSvg from '@fortawesome/fontawesome-free/svgs/solid/circle.svg';
+import * as remote from '@electron/remote';
 import * as _ from 'lodash';
 import * as path from 'path';
 import * as React from 'react';
@@ -94,7 +95,13 @@ async function flashImageToDrive(
 		return '';
 	}
 
-	const iconPath = path.join('media', 'icon.png');
+	const isDev = !remote.app.isPackaged;
+	let iconPath;
+	if (isDev) {
+		iconPath = path.join('main_window', 'media', 'icon48.png');
+	} else {
+		iconPath = path.join('media', 'icon48.png');
+	}
 	const basename = path.basename(image.path);
 	try {
 		await imageWriter.flash(image, drives);

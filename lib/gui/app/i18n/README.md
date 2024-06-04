@@ -15,7 +15,7 @@ Using the open-source lib [i18next](https://www.i18next.com/).
    already-added imports and add `xx: xx_translation` in the `resources` section of `i18next.init()` function.
 4. Now go to `lib/shared/catalina-sudo/` and copy the `sudo-askpass.osascript-en.js`, change it to
    be `sudo-askpass.osascript-xx.js` and edit
-   the `'balenaEtcher needs privileged access in order to flash disks.\n\nType your password to allow this.'` line and
+   the `'Etcher-ng needs privileged access in order to flash disks.\n\nType your password to allow this.'` line and
    those `Ok`s and `Cancel`s to your own language.
 5. If, your language has several variations when they are used in several countries/regions, such as `zh-CN` and `zh-TW`
    , or `pt-BR` and `pt-PT`, edit
