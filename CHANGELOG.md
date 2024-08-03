@@ -6,14 +6,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 # v1.19.22
 ## (2024-07-18)
 
+* Update some npm packages [Alex313031]
 * Replace deprecated Flowzone inputs [Kyle Harding]
 
 # v1.19.21
-## (2024-05-30)
+## (2024-06-02)
 
-* patch: fix missing windows dependency [Edwin Joassart]
-* patch: fix missing windows dependency [Edwin Joassart]
-* patch: fix missing windows dependency [Edwin Joassart]
+* patch: Update Electron to 28.3.3 [Alex313031]
+* Update some npm packages [Alex313031]
 
 # v1.19.20
 ## (2024-05-30)
@@ -24,16 +24,29 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## (2024-05-28)
 
 * patch: add sentry debug flag [Edwin Joassart]
-
-# v1.19.18
-## (2024-05-22)
-
 * patch: fix Sentry DSN for main process [Edwin Joassart]
 
-# v1.19.17
+# v1.19.18
 ## (2024-05-09)
 
-* patch: fix injection of analytics key at build time [JOASSART Edwin]
+* patch: fix injection of analytics key at build time [Edwin Joassart]
+
+# v1.19.17
+## (2024-04-26)
+
+* Rebase: Rebase and downgrade to Node 18/Electron 28 [Alex313031]
+* Update some npm packages [Alex313031]
+* Added Electron version to Javascript Console [Alex313031]
+* Added "Decompress First" option to Settings [Alex313031]
+* Tweaked Settings page, and restored the "Settings" title [Alex313031]
+* Made most links open in new Electron window rather than external browser [Alex313031]
+* Stopped inlining notification icon png [Alex313031]
+* Completely disabled auto-updates and telemetry [Alex313031]
+* Fixed dark mode sometimes not working on some OSes [Alex313031]
+* Added "Edit Config File" to the Developer menu [Alex313031]
+* Added keyboard shortcut for chrome://process-internals [Alex313031]
+* Changed Restart App shortcut to Ctrl + Alt + R instead of Ctrl + Shift + R, which would just reload the page [Alex313031]
+* Linting and spelling fixes [Alex313031]
 
 # v1.19.16
 ## (2024-04-26)
@@ -48,7 +61,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 # v1.19.14
 ## (2024-04-25)
 
-* patch: pretty-bytes to 6.1.1 [JOASSART Edwin]
+* patch: pretty-bytes to 6.1.1 [Edwin Joassart]
 
 # v1.19.13
 ## (2024-04-25)
@@ -91,20 +104,24 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * patch: replace deprecated pkg with yao-pkg and bump etcher-util node v to 20.10 [Edwin Joassart]
 
 # v1.19.7
-## (2024-04-22)
+## (2024-04-15)
 
+* Update and fix etcher-sdk on Windows [Alex313031]
 * patch: fix formating [Edwin Joassart]
 * patch: configure prettier in the project to use balena-lint configuration [Edwin Joassart]
 
 # v1.19.6
-## (2024-04-19)
+## (2024-02-20)
 
+* Update notification icon [Alex313031]
+* Replace deprecated flowzone input tests_run_on [Kyle Harding]
 * patch: fix win signature process [Edwin Joassart]
 
 # v1.19.5
-## (2024-02-14)
+## (2024-02-08)
 
-* Replace deprecated flowzone input tests_run_on [Kyle Harding]
+* patch: remove screensaver error when not on etcher-pro [Alex313031]
+* patch: fix typo in IPC server id [Alex313031]
 
 # v1.19.4
 ## (2024-01-26)

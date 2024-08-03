@@ -70,12 +70,17 @@ git clone --recursive https://github.com/balena-io/etcher
 cd etcher
 ```
 
-### Running the application
+### Building and Running the application
 
 #### GUI
 
 ```sh
-# Build and start application
+# Install dependencies
+npm install
+# Build the GUI
+npm run webpack #or npm run build
+npm run build #or npm run webpack
+# Start Electron
 npm start
 ```
 

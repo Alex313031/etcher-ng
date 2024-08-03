@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 balena.io
+ * Copyright 2024 balena.io and Alex313031
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
+import * as Os from 'os';
 import * as electron from 'electron';
-import { displayName } from '../../package.json';
+import * as electronLog from 'electron-log';
+import { open as openInternal } from './app/os/open-internal/services/open-internal';
+import { open as openExternal } from './app/os/open-external/services/open-external';
 
 import * as i18next from 'i18next';
 
@@ -23,6 +26,28 @@ import * as i18next from 'i18next';
  * @summary Builds a native application menu for a given window
  */
 export function buildWindowMenu(window: electron.BrowserWindow) {
+	// Get version info
+	const appName = electron.app.getName();
+	const appVer = electron.app.getVersion();
+	const electronVer = process.versions.electron;
+	const chromeVer = process.versions.chrome;
+	const nodeVer = process.versions.node;
+	const v8Ver = process.versions.v8;
+	// Globally export what OS we are on
+	const isLinux = process.platform === 'linux';
+	const isWin = process.platform === 'win32';
+	const isMac = process.platform === 'darwin';
+	let currentOS;
+	if (isLinux) {
+		currentOS = 'Linux';
+	} else if (isWin) {
+		currentOS = 'Windows';
+	} else if (isMac) {
+		currentOS = 'MacOS';
+	} else {
+		currentOS = 'BSD';
+	}
+	const archType = Os.arch();
 	/**
 	 * @summary Toggle the main window's devtools
 	 */
@@ -33,8 +58,10 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 		// NOTE: We can't use `webContents.toggleDevTools()` here,
 		// as we need to force detached mode
 		if (window.webContents.isDevToolsOpened()) {
+			electronLog.info('Closing Electron DevTools');
 			window.webContents.closeDevTools();
 		} else {
+			electronLog.info('Opening Electron DevTools on mainWindow');
 			window.webContents.openDevTools({
 				mode: 'detach',
 			});
@@ -47,19 +74,65 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 			label: i18next.t('menu.edit'),
 		},
 		{
+			role: 'viewMenu',
 			label: i18next.t('menu.view'),
-			submenu: [
-				{
-					label: i18next.t('menu.devTool'),
-					accelerator:
-						process.platform === 'darwin' ? 'Command+Alt+I' : 'Control+Shift+I',
-					click: toggleDevTools,
-				},
-			],
 		},
 		{
 			role: 'windowMenu',
 			label: i18next.t('menu.window'),
+		},
+		{
+			label: i18next.t('menu.devmenu'),
+			submenu: [
+				{
+					label: i18next.t('menu.electrondevtools'),
+					accelerator: isMac ? 'Cmd+Shift+F12' : 'F12',
+					click() {
+						toggleDevTools();
+					},
+				},
+				{ type: 'separator' },
+				{
+					label: i18next.t('menu.gpu'),
+					accelerator: 'CmdorCtrl+Alt+G',
+					click() {
+						electronLog.info('Opening chrome://gpu');
+						openInternal('chrome://gpu');
+					},
+				},
+				{
+					label: i18next.t('menu.procinternals'),
+					accelerator: 'CmdorCtrl+Alt+P',
+					click() {
+						electronLog.info('Opening chrome://process-internals');
+						openInternal('chrome://process-internals');
+					},
+				},
+				{
+					label: i18next.t('menu.testwindow'),
+					accelerator: 'CmdorCtrl+N',
+					click() {
+						electronLog.info('Opening Test Window');
+						openInternal('https://www.google.com/');
+					},
+				},
+				{ type: 'separator' },
+				{
+					label: i18next.t('menu.config'),
+					click() {
+						electronLog.info('Editing Config File');
+						electron.app.emit('edit-config-file');
+					},
+				},
+				{
+					label: i18next.t('menu.restart'),
+					accelerator: 'CmdorCtrl+Alt+R',
+					click() {
+						electron.app.relaunch();
+						electron.app.quit();
+					},
+				},
+			],
 		},
 		{
 			role: 'help',
@@ -68,32 +141,53 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 				{
 					label: i18next.t('menu.pro'),
 					click() {
-						electron.shell.openExternal(
-							'https://etcher.io/pro?utm_source=etcher_menu&ref=etcher_menu',
+						openInternal(
+							'https://www.balena.io/etcher-pro?utm_source=etcher_menu&ref=etcher_menu',
 						);
 					},
 				},
 				{
 					label: i18next.t('menu.website'),
 					click() {
-						electron.shell.openExternal('https://etcher.io?ref=etcher_menu');
+						openInternal('https://etcher.balena.io?ref=etcher_menu');
 					},
 				},
 				{
 					label: i18next.t('menu.issue'),
 					click() {
-						electron.shell.openExternal(
-							'https://github.com/balena-io/etcher/issues',
-						);
+						openExternal('https://github.com/Alex313031/etcher-ng/issues');
+					},
+				},
+				{ type: 'separator' },
+				{
+					label: i18next.t('menu.about'),
+					accelerator: 'CmdorCtrl+Alt+A',
+					click() {
+						const info = [
+							appName + ' v' + appVer,
+							'',
+							'Electron : ' + electronVer,
+							'Chromium : ' + chromeVer,
+							'Node : ' + nodeVer,
+							'V8 : ' + v8Ver,
+							'OS : ' + currentOS + ' ' + archType,
+						];
+						electron.dialog.showMessageBox({
+							type: 'info',
+							title: 'About ' + appName,
+							message: info.join('\n'),
+							buttons: ['Ok'],
+						});
+						electronLog.info('Opened About window');
 					},
 				},
 			],
 		},
 	];
 
-	if (process.platform === 'darwin') {
+	if (isMac) {
 		menuTemplate.unshift({
-			label: displayName,
+			label: appName,
 			submenu: [
 				{
 					role: 'about' as const,
@@ -118,17 +212,60 @@ export function buildWindowMenu(window: electron.BrowserWindow) {
 					type: 'separator' as const,
 				},
 				{
-					role: 'quit' as const,
+					label: i18next.t('menu.goback'),
+					accelerator: 'Alt+Left',
+					click(item, focusedWindow) {
+						if (focusedWindow) {
+							focusedWindow.webContents.goBack();
+						}
+						electronLog.info('Navigated back');
+					},
+				},
+				{
+					label: i18next.t('menu.goforward'),
+					accelerator: 'Alt+Right',
+					click(item, focusedWindow) {
+						if (focusedWindow) {
+							focusedWindow.webContents.goForward();
+						}
+						electronLog.info('Navigated forward');
+					},
+				},
+				{
 					label: i18next.t('menu.quit'),
+					accelerator: 'CmdOrCtrl+Q',
+					role: 'quit' as const,
 				},
 			],
 		});
 	} else {
 		menuTemplate.unshift({
-			label: displayName,
+			label: appName,
 			submenu: [
 				{
-					role: 'quit',
+					label: i18next.t('menu.goback'),
+					accelerator: 'Alt+Left',
+					click(item, focusedWindow) {
+						if (focusedWindow) {
+							focusedWindow.webContents.goBack();
+						}
+						electronLog.info('Navigated back');
+					},
+				},
+				{
+					label: i18next.t('menu.goforward'),
+					accelerator: 'Alt+Right',
+					click(item, focusedWindow) {
+						if (focusedWindow) {
+							focusedWindow.webContents.goForward();
+						}
+						electronLog.info('Navigated forward');
+					},
+				},
+				{
+					label: i18next.t('menu.quit'),
+					accelerator: 'CmdOrCtrl+Q',
+					role: 'quit' as const,
 				},
 			],
 		});
