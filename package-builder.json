@@ -4,7 +4,7 @@
   "appName": "Etcher-ng",
   "productName": "Etcher-ng",
   "displayName": "Etcher NG",
-  "version": "1.19.21",
+  "version": "1.19.22",
   "packageType": "local",
   "main": "./main/index.js",
   "description": "Flash OS images to SD cards and USB drives, safely and easily.",
